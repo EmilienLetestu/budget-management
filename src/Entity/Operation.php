@@ -6,6 +6,9 @@
  * Time: 19:25
  */
 
+namespace App\Entity;
+
+
 class Operation
 {
     /**
@@ -28,6 +31,16 @@ class Operation
      */
     private $comment;
 
+    /**
+     * @var
+     */
+    private $paymentType;
+
+    /**
+     * @var
+     */
+    private $purpose;
+
 
     /** setters and getters */
 
@@ -39,7 +52,7 @@ class Operation
     /**
      * @param mixed $madeOn
      */
-    public function setMadeOn(DateTime $madeOn)
+    public function setMadeOn(\DateTime $madeOn)
     {
         $this->madeOn = $madeOn;
     }
@@ -47,7 +60,7 @@ class Operation
     /**
      * @return Operation
      */
-    public function getMadeOn():Operation
+    public function getMadeOn(): Operation
     {
         return $this->madeOn;
     }
@@ -65,7 +78,7 @@ class Operation
     /**
      * @return mixed
      */
-    public function getAmount():Operation
+    public function getAmount(): Operation
     {
         return $this->amount;
     }
@@ -81,9 +94,43 @@ class Operation
     /**
      * @return mixed
      */
-    public function getComment():Operation
+    public function getComment(): Operation
     {
         return $this->comment;
     }
+
+
+    /**
+     * @return PaymentType
+     */
+    public function getPaymentType(): PaymentType
+    {
+        return $this->paymentType;
+    }
+
+    /**
+     * @param PaymentType $paymentType
+     */
+    public function setPaymentType(PaymentType $paymentType)
+    {
+        $this->paymentType = $paymentType;
+    }
+
+    /**
+     * @return Purpose
+     */
+    public function getPurpose(): Purpose
+    {
+        return $this->purpose;
+    }
+
+    /**
+     * @param Purpose $purpose
+     */
+    public function setPurpose(Purpose $purpose)
+    {
+        $this->purpose = $purpose;
+    }
+
 
 }

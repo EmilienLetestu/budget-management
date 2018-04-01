@@ -2,14 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: emilien
- * Date: 31/03/2018
- * Time: 19:48
+ * Date: 01/04/2018
+ * Time: 02:54
  */
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class PaymentType
+class Purpose
 {
     /**
      * @var
@@ -26,11 +27,10 @@ class PaymentType
      */
     private $operations;
 
-
     /**
-     * @return PaymentType
+     * @return mixed
      */
-    public function getId():PaymentType
+    public function getId():Purpose
     {
         return $this->id;
     }
@@ -44,16 +44,15 @@ class PaymentType
     }
 
     /**
-     * @return PaymentType
+     * @return Purpose
      */
-    public function getType():PaymentType
+    public function getType():Purpose
     {
         return $this->type;
     }
 
-
     /**
-     * PaymentType constructor.
+     * Purpose constructor.
      */
     public function __construct()
     {
@@ -77,5 +76,11 @@ class PaymentType
     public function removeOperation(Operation $operation)
     {
         $this->operations->removeElement($operation);
+
     }
+
+
+
+
+
 }
