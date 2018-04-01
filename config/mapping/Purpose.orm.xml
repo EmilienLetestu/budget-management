@@ -9,6 +9,10 @@
             <generator strategy="AUTO" />
         </id>
         <field name="type" type="string" length="100"/>
+        <one-to-many field="operations"
+                     target-entity="App\Entity\Operation"
+                     mapped-by="purpose">
+        </one-to-many>
     </entity>
 
 </doctrine-mapping>
