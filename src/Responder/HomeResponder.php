@@ -26,10 +26,13 @@ class HomeResponder
         $this->twig = $twig;
     }
 
-    public function __invoke($result)
+    /**
+     * @return Response
+     */
+    public function __invoke()
     {
        return new Response(
-           $this->twig->render('base.html.twig',['title' => $result])
+           $this->twig->render('base.html.twig')
        );
     }
 }

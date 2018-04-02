@@ -14,6 +14,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class PaymentTypeFixtures extends Fixture
 {
+
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         $typeList = [

@@ -23,6 +23,6 @@ class HomeAction
      */
     public function __invoke(HomeResponder $responder)
     {
-        return $responder('hello word');
+        return $responder();
     }
 }

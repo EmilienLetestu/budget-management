@@ -15,6 +15,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class PurposeType extends Fixture
 {
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         $purposeList = [
