@@ -9,20 +9,85 @@ namespace App\Action;
 
 
 
+use App\Action\Interfaces\HomeActionInterface;
+use App\Entity\Operation;
+use App\Form\Type\AddOperationType;
+use App\Handler\AddOperationHandler;
 use App\Responder\HomeResponder;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class HomeAction
+class HomeAction implements HomeActionInterface
 {
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+    private $addOperationHandler;
+    private $urlGenerator;
+    private $doctrine;
+
+    /**
+     * HomeAction constructor.
+     * @param FormFactoryInterface $formFactory
+     * @param AddOperationHandler $addOperationHandler
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param EntityManagerInterface $doctrine
+     */
+    public function __construct(
+        FormFactoryInterface $formFactory,
+        AddOperationHandler $addOperationHandler,
+        UrlGeneratorInterface $urlGenerator,
+        EntityManagerInterface $doctrine
+    )
+    {
+        $this->formFactory = $formFactory;
+        $this->addOperationHandler = $addOperationHandler;
+        $this->urlGenerator = $urlGenerator;
+        $this->doctrine = $doctrine;
+    }
+
+
     /**
      *
      * @Route("/", name="home")
      *
+     * @param Request $request
      * @param HomeResponder $responder
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function __invoke(HomeResponder $responder)
+    public function __invoke(Request $request, HomeResponder $responder):Response
     {
-        return $responder();
+
+        $operation = new Operation();
+
+        $form = $this->formFactory
+            ->create(AddOperationType::class,$operation)
+            ->handleRequest($request)
+        ;
+
+        if($this->addOperationHandler->handle($form, $operation))
+        {
+
+            $this->doctrine->getRepository(Operation::class);
+            $this->doctrine->persist($operation);
+
+
+            $this->doctrine->flush();
+
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
+
+        }
+
+        return $responder(
+            $form->createView()
+        );
     }
 }

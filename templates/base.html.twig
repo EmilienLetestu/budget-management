@@ -8,6 +8,19 @@
     <body>
         {% block body %}{% endblock %}
             <h1>hello world</h1>
+        <div>
+            {{ form_start(form) }}
+
+            {{ form_row(form.madeOn) }}
+            {{ form_row(form.comment) }}
+            {{ form_row(form.amount) }}
+            {{ form_row(form.paymentType) }}
+            {{ form_row(form.purpose) }}
+            <button type="submit">fddssdfdf</button>
+
+            {{ form_end(form) }}
+        </div>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

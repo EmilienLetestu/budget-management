@@ -6,6 +6,7 @@
  * Time: 02:54
  */
 
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -37,16 +38,19 @@ class Purpose
 
     /**
      * @param string $type
+     * @return Purpose
      */
-    public function setType(string $type)
+    public function setType(string $type):Purpose
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
      * @return Purpose
      */
-    public function getType():Purpose
+    public function getType()
     {
         return $this->type;
     }

@@ -1,0 +1,14 @@
+App\Entity\Operation:
+    properties:
+        amount:
+            - Type: 'numeric'
+        comment:
+            - Length:
+                min: 10
+                max: 50
+                groups: ['add']
+        paymentType:
+             - NotNull: ~
+        purpose:
+             - NotNull: ~
+

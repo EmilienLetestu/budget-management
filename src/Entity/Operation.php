@@ -6,6 +6,7 @@
  * Time: 19:25
  */
 
+
 namespace App\Entity;
 
 
@@ -44,57 +45,66 @@ class Operation
 
     /** setters and getters */
 
-    public function getId():Operation
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @param mixed $madeOn
+     * @param $madeOn
+     * @return Operation
      */
-    public function setMadeOn(\DateTime $madeOn)
+    public function setMadeOn($madeOn):Operation
     {
         $this->madeOn = $madeOn;
+
+        return $this;
     }
 
     /**
      * @return Operation
      */
-    public function getMadeOn(): Operation
+    public function getMadeOn()
     {
         return $this->madeOn;
     }
 
 
     /**
-     * @param $amount
+     * @param int $amount
+     * @return Operation
      */
-    public function setAmount(int $amount)
+    public function setAmount(int $amount):Operation
     {
         $this->amount = $amount;
+
+        return $this;
     }
 
 
     /**
      * @return mixed
      */
-    public function getAmount(): Operation
+    public function getAmount()
     {
         return $this->amount;
     }
 
     /**
-     * @param mixed $comment
+     * @param string $comment
+     * @return Operation
      */
-    public function setComment(string $comment)
+    public function setComment(string $comment):Operation
     {
         $this->comment = $comment;
+
+        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getComment(): Operation
+    public function getComment()
     {
         return $this->comment;
     }
@@ -103,33 +113,39 @@ class Operation
     /**
      * @return PaymentType
      */
-    public function getPaymentType(): PaymentType
+    public function getPaymentType()
     {
         return $this->paymentType;
     }
 
     /**
      * @param PaymentType $paymentType
+     * @return Operation
      */
-    public function setPaymentType(PaymentType $paymentType)
+    public function setPaymentType(PaymentType $paymentType):Operation
     {
         $this->paymentType = $paymentType;
+
+        return $this;
     }
 
     /**
      * @return Purpose
      */
-    public function getPurpose(): Purpose
+    public function getPurpose()
     {
         return $this->purpose;
     }
 
     /**
      * @param Purpose $purpose
+     * @return Operation
      */
-    public function setPurpose(Purpose $purpose)
+    public function setPurpose(Purpose $purpose):Operation
     {
         $this->purpose = $purpose;
+
+        return $this;
     }
 
 

@@ -6,33 +6,37 @@
  * Time: 18:49
  */
 
+
 namespace App\Responder;
 
 
 
+use App\Responder\Interfaces\HomeResponderInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
 
-class HomeResponder
+
+class HomeResponder implements HomeResponderInterface
 {
     private $twig;
 
-    /**
-     *
-     * HomeResponder constructor.
-     * @param \Twig_Environment $twig
-     */
-    public function __construct(\Twig_Environment $twig)
+
+    public function __construct(Environment $twig)
     {
         $this->twig = $twig;
     }
 
     /**
+     * @param FormView $formView
      * @return Response
      */
-    public function __invoke()
+    public function __invoke(FormView $formView):Response
     {
        return new Response(
-           $this->twig->render('base.html.twig')
+           $this->twig->render('base.html.twig',[
+               'form' => $formView
+           ])
        );
     }
 }

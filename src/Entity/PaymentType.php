@@ -5,6 +5,9 @@
  * Date: 31/03/2018
  * Time: 19:48
  */
+
+
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -30,23 +33,26 @@ class PaymentType
     /**
      * @return PaymentType
      */
-    public function getId():PaymentType
+    public function getId()
     {
         return $this->id;
     }
 
     /**
      * @param string $type
+     * @return PaymentType
      */
-    public function setType(string $type)
+    public function setType(string $type):PaymentType
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
      * @return PaymentType
      */
-    public function getType():PaymentType
+    public function getType()
     {
         return $this->type;
     }
