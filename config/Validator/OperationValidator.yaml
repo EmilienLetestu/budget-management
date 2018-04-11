@@ -1,14 +1,18 @@
 App\Entity\Operation:
     properties:
         amount:
-            - Type: 'numeric'
+            - Type:
+                type: integer
+                message: The value {{ value }} is not a valid {{ type }}.
+                groups: [add]
         comment:
             - Length:
                 min: 10
                 max: 50
-                groups: ['add']
+                groups: [add]
         paymentType:
-             - NotNull: ~
+             - NotNull: { groups: [add] }
         purpose:
-             - NotNull: ~
+             - NotNull: { groups: [add] }
+
 

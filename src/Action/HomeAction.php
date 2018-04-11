@@ -11,8 +11,8 @@ namespace App\Action;
 
 use App\Action\Interfaces\HomeActionInterface;
 use App\Entity\Operation;
-use App\Form\Type\AddOperationType;
-use App\Handler\AddOperationHandler;
+use App\Form\Type\EditOperationType;
+use App\Handler\EditOperationHandler;
 use App\Responder\HomeResponder;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -35,13 +35,13 @@ class HomeAction implements HomeActionInterface
     /**
      * HomeAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param AddOperationHandler $addOperationHandler
+     * @param EditOperationHandler $addOperationHandler
      * @param UrlGeneratorInterface $urlGenerator
      * @param EntityManagerInterface $doctrine
      */
     public function __construct(
         FormFactoryInterface $formFactory,
-        AddOperationHandler $addOperationHandler,
+        EditOperationHandler $addOperationHandler,
         UrlGeneratorInterface $urlGenerator,
         EntityManagerInterface $doctrine
     )
@@ -67,7 +67,7 @@ class HomeAction implements HomeActionInterface
         $operation = new Operation();
 
         $form = $this->formFactory
-            ->create(AddOperationType::class,$operation)
+            ->create(EditOperationType::class,$operation)
             ->handleRequest($request)
         ;
 

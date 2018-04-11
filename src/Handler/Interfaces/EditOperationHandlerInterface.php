@@ -12,7 +12,7 @@ namespace App\Handler\Interfaces;
 use App\Entity\Operation;
 use Symfony\Component\Form\FormInterface;
 
-Interface AddOperationHandlerInterface
+Interface EditOperationHandlerInterface
 {
     public function handle(FormInterface $form, Operation $operation):bool;
 

@@ -10,10 +10,10 @@
 namespace App\Handler;
 
 use App\Entity\Operation;
-use App\Handler\Interfaces\AddOperationHandlerInterface;
+use App\Handler\Interfaces\EditOperationHandlerInterface;
 use Symfony\Component\Form\FormInterface;
 
-class AddOperationHandler implements AddOperationHandlerInterface
+class EditOperationHandler implements EditOperationHandlerInterface
 {
 
     public function handle(FormInterface $form, Operation $operation):bool
